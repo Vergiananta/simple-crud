@@ -15,8 +15,8 @@ const (
 
 type ICustomerRepo interface {
 	CreateCustomer(newCustomer *models.Customer) (*models.Customer, error)
-	UpdateName(nama string, id int) (string, error)
-	DeleteCustomer(id int) (string, error)
+	UpdateName(nama string, id string) (string, error)
+	DeleteCustomer(id string) (string, error)
 	GetAllCustomer() ([]models.Customer, error)
 }
 
@@ -44,7 +44,7 @@ func (c *customerRepository) GetAllCustomer() ([]models.Customer, error) {
 	return result, nil
 }
 
-func (c *customerRepository) DeleteCustomer(id int) (string, error) {
+func (c *customerRepository) DeleteCustomer(id string) (string, error) {
 	//TODO implement me
 	db, err := c.db.Begin()
 	_, err = db.Query(DELETECUSTOMER, id)
@@ -60,7 +60,7 @@ func (c *customerRepository) DeleteCustomer(id int) (string, error) {
 	return "Data has been deleted", nil
 }
 
-func (c *customerRepository) UpdateName(nama string, id int) (string, error) {
+func (c *customerRepository) UpdateName(nama string, id string) (string, error) {
 	//TODO implement me
 	db, err := c.db.Begin()
 	_, err = db.Exec(UPDATECUSTOMER, nama, id)

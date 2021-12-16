@@ -48,9 +48,11 @@ func (c *connect) Config() *viper.Viper {
 	return cfg
 }
 
-func (c *connect) ApiServer() string {
+func (i *connect) ApiServer() string {
 	//TODO implement me
-	panic("implement me")
+	host := i.Config().GetString("HTTPHOST")
+	port := i.Config().GetString("HTTPPORT")
+	return fmt.Sprintf("%s:%s", host, port)
 }
 
 func NewConnect() Connect {

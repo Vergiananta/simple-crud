@@ -7,8 +7,8 @@ import (
 
 type ICustomerUsecase interface {
 	CreateCustomer(newCustomer *models.Customer) (*models.Customer, error)
-	UpdateCustomer(nama string, id int) (string, error)
-	DeleteCustomer(id int) (string, error)
+	UpdateCustomer(nama string, id string) (string, error)
+	DeleteCustomer(id string) (string, error)
 	GetAllCustomer() ([]models.Customer, error)
 }
 
@@ -21,12 +21,12 @@ func (c *customerUsecase) GetAllCustomer() ([]models.Customer, error) {
 	return c.customerRepo.GetAllCustomer()
 }
 
-func (c *customerUsecase) DeleteCustomer(id int) (string, error) {
+func (c *customerUsecase) DeleteCustomer(id string) (string, error) {
 	//TODO implement me
 	return c.customerRepo.DeleteCustomer(id)
 }
 
-func (c *customerUsecase) UpdateCustomer(nama string, id int) (string, error) {
+func (c *customerUsecase) UpdateCustomer(nama string, id string) (string, error) {
 	//TODO implement me
 	return c.customerRepo.UpdateName(nama, id)
 }
